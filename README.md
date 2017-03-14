@@ -3,15 +3,13 @@
 # Install
 
 ```
-git clone git@github.com:CooperativeActivities/crac-frontend.git
+git clone git@github.com:CooperativeActivities/crac-frontend-ionic2.git
 ```
 ## Dependencies:
 - ionic-cli
-- bower
 
 # Setup
 ```
-bower install
 ```
 
 # Run local test server
