@@ -1,0 +1,687 @@
+// http://ionicframework.com/docs/v2/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+
+
+
+/* Empty. Add your own CSS if you like */
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+.full-width{
+  width: 90%;
+}
+.input-button {
+  position: absolute;
+  right: 0;
+  top: 5px;
+  color: #bbb;
+}
+
+/* -- HEADER -------------------------------------------------------------------------------------------------------- */
+
+#side-menu21 {
+  background-color: #B070B2;
+  width: 275px;
+  z-index: 0;
+}
+
+#side-menu21 .profile-image a {
+  display: block;
+}
+
+#side-menu21 .profile-image img {
+  display: block;
+  margin: 0 auto;
+}
+
+#myCrAcMenu-heading14 {
+  padding: 16px 12px;
+  color: #fff;
+  text-align: center;
+  display: block;
+}
+
+/* -- FOOTER -------------------------------------------------------------------------------------------------------- */
+
+.tabs-1 .tab-item:hover {
+  text-decoration: none;
+  color: #fff;
+}
+
+.tab-item.tab-item-active, .tab-item.active, .tab-item.activated {
+  color: #fff;
+}
+
+/* disables tab titles */
+#page1 .tab-item .icon {
+  margin: 10px auto;
+}
+
+/* -- CONTENT ------------------------------------------------------------------------------------------------------- */
+
+.content-title {
+  padding: 10px 0;
+  font-size: 20px;
+}
+
+/* -- Custom -------------------------------------------------------------------------------------------------------- */
+
+.profile-image, .logo {
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.modal.slide-in-up {
+  border-radius: 4px;
+}
+
+#logo {
+  margin: 0 auto;
+  width: 130px;
+  margin-bottom: 20px;
+}
+
+.container {
+  padding: 20px;
+  min-width: 300px;
+}
+
+.row {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.col-100 {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 100%;
+  -moz-box-flex: 0;
+  -moz-flex: 0 0 100%;
+  -ms-flex: 0 0 100%;
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+.col-25 {
+  padding: 5px;
+}
+
+.assertive {
+  color: #663366;
+}
+
+img.img-responsive {
+  display: block;
+  max-width: 100%; height: auto;
+}
+
+/* page */
+
+#page5, #page6 {
+  text-align: center;
+}
+
+#page10, #page1 {
+  text-align: left;
+}
+
+/*-- FORM ----------------------------------------------------------------------------------------------------------- */
+/* shoukd not contain ion native tags */
+.item {
+  margin: -1px 0 -1px 0;
+}
+
+.item.item-select {
+  padding: 6px 0 5px 16px;
+}
+
+input[disabled], select[disabled], textarea[disabled], input[readonly]:not(.cloned-text-input), textarea[readonly]:not(.cloned-text-input), select[readonly] {
+  background: transparent;
+}
+
+.bar .button {
+  background: none;
+  color: #fff;
+}
+
+/*-- OVERRIDES ------------------------------------------------------------------------------------------------------ */
+
+.item-divider, .button {
+  border-radius: 50px;
+}
+
+.range, .item-select, .card {
+  border-radius: 20px;
+}
+
+.list .item-divider {
+  border-radius: 0;
+}
+
+.item-divider {
+  margin-bottom: 10px;
+}
+
+.card .item-divider, .list .item-divider {
+  margin-bottom: 0;
+}
+
+.list .item:first-child {
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.list .item:last-child, .item-stable:not(.active) {
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+.list .list .item:not(.child) {
+  border-radius: 0;
+}
+
+.item-stable {
+  margin-bottom: 6px;
+}
+
+.item-stable > .icon {
+  font-size: 30px;
+  line-height: 30px;
+  color: #58bd91;
+  border: 2px solid #33A58C;
+  background: #fff;
+  border-radius: 50px;
+  padding: 5px 9px;
+  float: right;
+  z-index: 3;
+  position: relative;
+  left: -10px;
+  top: 10px;
+  margin: 0 0 0 -50px;
+}
+
+.bar-1 {
+  border-color: #1C7DC9;
+  background-color: #1C7DC9;
+  background-image: linear-gradient(0deg, #1C7DC9, #1C7DC9 50%, transparent 50%);
+  color: #fff;
+}
+
+.bar-1 .title {
+  color: #fff;
+}
+
+.parent.item, .child.item {
+  padding: 0;
+}
+
+.parent.item .item, .child.item .item {
+  border: none;
+}
+
+/*-- BUTTONS -------------------------------------------------------------------------------------------------------- */
+
+/* -- calm ---------------------------------------------------------------------------------------------------------- */
+
+.button.button-calm {
+  border-color: transparent;
+  background-color: #11c1f3;
+  color: #fff;
+}
+
+.button.button-calm:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+.button.button-calm.active, .button.button-calm.activated {
+  background-color: #0a9dc7;
+}
+
+.button.button-calm.button-clear {
+  border-color: transparent;
+  background: none;
+  box-shadow: none;
+  color: #11c1f3;
+}
+
+.button.button-calm.button-icon {
+  border-color: transparent;
+  background: none;
+}
+
+.button.button-calm.button-outline {
+  border-color: #11c1f3;
+  background: transparent;
+  color: #11c1f3;
+}
+
+.button.button-calm.button-outline.active, .button.button-calm.button-outline.activated {
+  background-color: #11c1f3;
+  box-shadow: none;
+  color: #fff;
+}
+
+/* -- energized ----------------------------------------------------------------------------------------------------- */
+
+.button.button-energized {
+  border-color: transparent;
+  background-color: #cc6601;
+  color: #fff;
+}
+
+.button.button-energized:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+.button.button-energized.active, .button.button-energized.activated {
+  background-color: #cc6601;
+}
+
+.button.button-energized.button-clear {
+  border-color: transparent;
+  background: none;
+  box-shadow: none;
+  color: #cc6601;
+}
+
+.button.button-energized.button-icon {
+  border-color: transparent;
+  background: none;
+}
+
+.button.button-energized.button-outline {
+  border-color: #cc6601;
+  background: transparent;
+  color: #cc6601;
+}
+
+.button.button-energized.button-outline.active, .button.button-energized.button-outline.activated {
+  background-color: #cc6601;
+  box-shadow: none;
+  color: #fff;
+}
+
+/* -- 1 ------------------------------------------------------------------------------------------------------------ */
+
+.button.button-1 {
+  border-color: transparent;
+  background-color: #1C7DC9;
+  color: #fff;
+}
+
+.button.button-1:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+.button.button-1.active, .button.1.activated {
+  background-color: #1C7DC9;
+}
+
+.button.button-1.button-clear {
+  border-color: transparent;
+  background: none;
+  box-shadow: none;
+  color: #1C7DC9;
+}
+
+.button.button-1.button-icon {
+  border-color: transparent;
+  background: none;
+}
+
+.button.button-1.button-outline {
+  border-color: #1C7DC9;
+  background: transparent;
+  color: #1C7DC9;
+}
+
+.button.button-1.button-outline.active, .button.button-1.button-outline.activated {
+  background-color: #1C7DC9;
+  box-shadow: none;
+  color: #fff;
+}
+
+.bar.bar-1 {
+  border-color: #1C7DC9;
+  background-color: #1C7DC9;
+  background-image: linear-gradient(0deg, #1C7DC9, #1C7DC9 50%, transparent 50%);
+  color: #fff;
+}
+
+.tabs-1 > .tabs,
+.tabs.tabs-1 {
+  border-color: #1C7DC9;
+  background-color: #1C7DC9;
+  background-image: linear-gradient(0deg, #1C7DC9, #1C7DC9 50%, transparent 50%);
+  color: #fff;
+}
+
+.tabs-1 > .tabs .tab-item .badge,
+.tabs.tabs-1 .tab-item .badge {
+  background-color: #fff;
+  color: #1C7DC9;
+}
+
+.tabs-striped.tabs-1 .tabs {
+  background-color: #1C7DC9;
+}
+
+.tabs-striped.tabs-1 .tab-item {
+  color: rgba(255, 255, 255, 0.4);
+  opacity: 1;
+}
+
+.tabs-striped.tabs-1 .tab-item .badge {
+  opacity: 0.4;
+}
+
+.tabs-striped.tabs-1 .tab-item.tab-item-active, .tabs-striped.tabs-1 .tab-item.active, .tabs-striped.tabs-1 .tab-item.activated {
+  margin-top: -2px;
+  color: #fff;
+  border-style: solid;
+  border-width: 2px 0 0 0;
+  border-color: #fff;
+}
+
+/* -- google-button ------------------------------------------------------------------------------------------------- */
+
+.button.button-google {
+  border-color: transparent;
+  background-color: #dc4f3d;
+  color: #fff;
+}
+
+.button.button-google:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+.button.button-google.active, .button.button-google.activated {
+  background-color: #dc4f3d;
+}
+
+.button.button-google.button-clear {
+  border-color: transparent;
+  background: none;
+  box-shadow: none;
+  color: #dc4f3d;
+}
+
+.button.button-google.button-icon {
+  border-color: transparent;
+  background: none;
+}
+
+.button.button-google.button-outline {
+  border-color: #dc4f3d;
+  background: transparent;
+  color: #dc4f3d;
+}
+
+.button.button-google.button-outline.active, .button.button-google.button-outline.activated {
+  background-color: #dc4f3d;
+  box-shadow: none;
+  color: #fff;
+}
+
+/* -- facebook-button ----------------------------------------------------------------------------------------------- */
+
+.button.button-face {
+  border-color: transparent;
+  background-color: #285397;
+  color: #fff;
+}
+
+.button.button-face:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+.button.button-face.active, .button.button-face.activated {
+  background-color: #285397;
+}
+
+.button.button-face.button-clear {
+  border-color: transparent;
+  background: none;
+  box-shadow: none;
+  color: #285397;
+}
+
+.button.button-face.button-icon {
+  border-color: transparent;
+  background: none;
+}
+
+.button.button-face.button-outline {
+  border-color: #285397;
+  background: transparent;
+  color: #285397;
+}
+
+.button.button-face.button-outline.active, .button.button-face.button-outline.activated {
+  background-color: #285397;
+  box-shadow: none;
+  color: #fff;
+}
+
+/* -- button-2 ------------------------------------------------------------------------------------------------------ */
+
+.button.button-2 {
+  border-color: transparent;
+  background-color: rgb(51, 165, 140);
+  color: #fff;
+}
+
+.button.button-2:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+.button.button-2.active, .button.button-2.activated {
+  background-color: rgb(51, 165, 140);
+}
+
+.button.button-2.button-clear {
+  border-color: transparent;
+  background: none;
+  box-shadow: none;
+  color: rgb(51, 165, 140);
+}
+
+.button.button-2.button-icon {
+  border-color: transparent;
+  background: none;
+}
+
+.button.button-2.button-outline {
+  border-color: rgb(51, 165, 140);
+  background: transparent;
+  color: rgb(51, 165, 140);
+}
+
+.button.button-2.button-outline.active, .button.button-2.button-outline.activated {
+  background-color: rgb(51, 165, 140);
+  box-shadow: none;
+  color: #fff;
+}
+
+/* -- button-3 ------------------------------------------------------------------------------------------------------ */
+
+.button.button-3 {
+  border-color: transparent;
+  background-color: #B070B2;
+  color: #fff;
+}
+
+.button.button-3:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+.button.button-3.active, .button.button-3.activated {
+  background-color: #B070B2;
+}
+
+.button.button-3.button-clear {
+  border-color: transparent;
+  background: none;
+  box-shadow: none;
+  color: #B070B2;
+}
+
+.button.button-3.button-icon {
+  border-color: transparent;
+  background: none;
+}
+
+.button.button-3.button-outline {
+  border-color: #B070B2;
+  background: transparent;
+  color: #8e0253;
+}
+
+.button.button-3.button-outline.active, .button.button-3.button-outline.activated {
+  background-color: #B070B2;
+  box-shadow: none;
+  color: #fff;
+}
+
+/* -- button-4 ------------------------------------------------------------------------------------------------------ */
+
+.button.button-4 {
+  border-color: transparent;
+  background-color: #855CB7;
+  color: #fff;
+}
+
+.button.button-4:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+.button.button-4.active, .button.button-4.activated {
+  background-color: #855CB7;
+}
+
+.button.button-4.button-clear {
+  border-color: transparent;
+  background: none;
+  box-shadow: none;
+  color: #855CB7;
+}
+
+.button.button-4.button-icon {
+  border-color: transparent;
+  background: none;
+}
+
+.button.button-4.button-outline {
+  border-color: #855CB7;
+  background: transparent;
+  color: #855CB7;
+}
+
+.button.button-4.button-outline.active, .button.button-4.button-outline.activated {
+  background-color: #855CB7;
+  box-shadow: none;
+  color: #fff;
+}
+
+/* Task list*/
+.item-task:not(.item-subtask) {
+  border-color: #33A58C;
+  border-width: 2px;
+}
+.item-task:not(.item-subtask) .item-content{
+  background: #58bd91;
+}
+.item-task:not(.item-subtask) .item-content, .item-task:not(.item-subtask) p, .item-task:not(.item-subtask) h2 {
+  color: #fff;
+}
+.item-task h2 {
+  font-weight: bold;
+}
+.parent .list{
+  margin-top: 10px;
+  /*margin-left: 1em;*/
+  /*margin-right: 1em;*/
+}
+.item-subtask, .item-subtask .item-content{
+  /*min-height: 50px;*/
+}
+.item-subtask h3 {
+  /*margin-left: 4em;*/
+}
+
+/* -- toggle -------------------------------------------------------------------------------------------------------- */
+
+.item-toggle .toggle {
+  position: relative;
+  top: 0;
+  right: 0;
+}
+
+.toggle .track {
+  margin: -10px 0 0 10px;
+  top: 10px;
+  position: relative;
+}
+
+.toggle .handle {
+  top: 0;
+  left: 0;
+}
+
+/* -- checkbox ------------------------------------------------------------------------------------------------------ */
+
+.checkbox input[type=checkbox], .checkbox-inline input[type=checkbox], .radio input[type=radio], .radio-inline input[type=radio] {
+  margin-left: 0;
+  position: inherit;
+}
+
+/* -- tabs ---------------------------------------------------------------------------------------------------------- */
+
+.tabs {
+  position: relative;
+}
+
+/* should be in a footer tag */
+#tabsController-tabs1 > .tabs {
+  position: absolute;
+}
+
+#myCrAcMenu-list1 .item {
+  border-radius: 0;
+}
+
+/* -- acordion ------------------------------------------------------------------------------------------------------ */
+
+.list .item.item-accordion {
+  line-height: 38px;
+  padding-top: 0;
+  padding-bottom: 0;
+  transition: 0.09s all linear;
+}
+.list .item.item-accordion.ng-hide {
+  line-height: 0px;
+}
+.list .item.item-accordion.ng-hide-add,
+.list .item.item-accordion.ng-hide-remove {
+  display: block !important;
+}
