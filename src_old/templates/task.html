@@ -1,0 +1,191 @@
+<ion-view cache-view="false" title="Aufgabe" hide-nav-bar="false">
+  <ion-nav-buttons side="right" class="has-header">
+    <button ng-click="edit()" ng-show="editableFlag" class="button icon ion-edit"></button>
+    <button ng-click="makeNewSubTask()" ng-if="addSubTaskFlag" class="button icon ion-android-add-circle scale"></button>
+  </ion-nav-buttons>
+  <ion-content padding="true" class="manual-ios-statusbar-padding has-footer">
+    <ion-refresher on-refresh="doRefresh()"></ion-refresher>
+    <div class="taskMainInfo" ng-cloak>
+
+      <h2>{{task.name}}</h2>
+      <p>{{task.description}}</p>
+      <hr>
+      <div class="row">
+        <div style="margin: 0.5em; width: 5em; height: 5em;">
+          <img class="img-responsive" src="img/VYlmQQCufa0Dowy1ZgZb_rkessen.jpg">
+        </div>
+        <div style="margin: 0.5em; width: 5em; height: 5em;">
+          <img class="img-responsive" src="img/7HOqUb6jTTeJeafRKenN_wand.jpg">
+        </div>
+      </div>
+
+      <c-accordion title="'Zeit und Ort'" shown="true">
+        <div class="row">
+          <div class="col-25">
+            <div class="row"><span class="ion-calendar"> Zeit: </span></div>
+          </div>
+          <div class="col">
+            <div class="row"> Von: {{ task.startTime | date : "medium" }} </div>
+            <div class="row"> Bis: {{ task.endTime | date : "medium" }} </div>
+          </div>
+        </div>
+        <div class="row" ng-if="checkLocation(task.location)">
+          <div class="col-25">
+            <div class="row"><span class="ion-location"> Ort: </span></div>
+          </div>
+          <div class="col">
+            <div class="row"> {{task.location}} </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <div class="row"><span class="ion-information-circled"> Status: </span></div>
+          </div>
+          <div class="col">
+            <div class="row status-icons">
+				<!-- only show non-published status for task owner -->
+				<i ng-if="participationType == 'LEADING'"
+						class="icon ion-compose icon-step1"
+						ng-class="{ current : (task.taskState == 'NOT_PUBLISHED' && !task.readyToPublish) }"></i>
+				<span ng-if="participationType == 'LEADING'" class="icon-connector"></span>
+				<i ng-if="participationType == 'LEADING'"
+					class="icon ion-eye-disabled icon-step2"
+					ng-class="{ current  : (task.taskState == 'NOT_PUBLISHED' && task.readyToPublish) }" ></i>
+				<span ng-if="participationType == 'LEADING'" class="icon-connector"></span>
+				<i class="icon ion-eye icon-step3"  ng-class="{ current: task.taskState == 'PUBLISHED' }"></i>
+					<span class="icon-connector"></span>
+				<i class="icon ion-load-a icon-step4"      ng-class="{ current: task.taskState == 'STARTED' }"></i>
+					<span class="icon-connector"></span>
+				<i class="icon ion-checkmark icon-step5" ng-class="{ current: task.taskState == 'COMPLETED' }"></i>
+			</div>
+			<div class="status-actions" ng-if="task.taskState == 'STARTED'">
+				<button ng-if="participationType == 'LEADING' && allAreDone" ng-click="complete()" class="button button-small button-outline button-balanced ion-checkmark">Aufgabe ist fertig</button>
+				<button ng-if="participationType == 'LEADING' && !allAreDone" ng-click="forceComplete()" class="button button-small button-outline button-balanced ion-checkmark">Aufgabe abschließen</button>
+				<span ng-if="participationType == 'PARTICIPATING' && userIsDone">Ich bin fertig <button ng-click="notDone()" class="button button-small button-outline button-assertive ion-close">Lösen</button></span>
+				<button ng-if="participationType == 'PARTICIPATING' && !userIsDone" ng-click="done()" class="button button-small button-outline button-balanced ion-checkmark">Ich bin fertig</button>
+			</div>
+          </div>
+        </div>
+
+      </c-accordion>
+
+      <c-accordion title="'Team'" ng-show="task.userRelationship.length > 0" shown="true">
+        <div class="row">
+          <div ng-repeat="member in task.userRelationships" style="margin: 0.5em;">
+            <img class="img-responsive" src="img/1lZ3VOkiRqOOdIDOu9mn_avatar.png" style="margin: 0 auto; width: 4em; height: 4em;">
+				<caption>
+					<i ng-show="member.participationType == 'LEADING'" class="icon ion-ios-star"></i>
+					<i ng-show="member.friend" class="icon ion-android-contacts"></i>
+					{{member.name}}
+				</caption>
+          </div>
+        </div>
+      </c-accordion>
+
+
+      <c-accordion title="'Notwendige Kompetenzen ('+ neededCompetences.length + ')'" ng-show="neededCompetences.length > 0">
+        <div>
+          Anmerkung (Temporär, bitte Feedback) <br>
+          Grün -> Rot ===  Unwichtig -> Wichtig <br>
+          Hell -> Dunkel === Leicht -> Schwer
+        </div>
+        <div class="tags">
+          <div class="tag" ng-repeat="competence in neededCompetences | orderBy: 'name'"
+                           ng-style="getCompetenceColors(competence)">
+            {{ competence.name }}
+          </div>
+        </div>
+        <br>
+      </c-accordion>
+
+      <c-accordion title="'Notwendiges Material (' + task.materials.length + ')'" ng-show="task.materials.length > 0">
+        <ion-list>
+          <div  ng-cloak>
+            <ion-item>
+              <ion-item ng-repeat="material in task.materials">
+                <custom-accordion>
+                  <custom-accordion-head>
+                    <div>
+                      <span>{{ material.quantity }}x</span>
+                      <span>{{ material.name }}</span>
+                    </div>
+                  </custom-accordion-head>
+                  <custom-accordion-body>
+                    <br>
+                    <div>
+                      {{ material.description }}
+                    </div>
+                    <br>
+                    <label>
+                      Anzahl: <input type="number" placeholder="Anzahl..." ng-model="material.subscribedQuantity">
+                    </label>
+                    <button ng-click="subscribe(material)"
+                      class="button button-small button-outline button-balanced ion-checkmark">Material bringen</button>
+                    <button ng-click="unsubscribe(material)"
+                      class="button button-small button-outline button-assertive ion-close">Material nicht mehr bringen</button>
+                  </custom-accordion-body>
+                </custom-accordion>
+              </ion-item>
+
+            </ion-item>
+          </div>
+        </ion-list>
+        <br>
+      </c-accordion>
+
+      <c-accordion title="'Übergeordnete Aufgabe'" ng-if="task.superTask">
+        <task-preview task="task.superTask" ng-click="loadSingleTask(task.superTask.id)"></task-preview>
+        <br>
+      </c-accordion>
+
+      <c-accordion title="'Unteraufgaben (' + task.childTasks.length + ')'" ng-show="task.childTasks.length > 0">
+        <ion-list>
+          <div ng-repeat="subTask in task.childTasks | orderBy: ['startTime', 'name']" ng-cloak>
+            <task-preview task="subTask" ng-click="loadSingleTask(subTask.id)"></task-preview>
+          </div>
+        </ion-list>
+		<br>
+		<button ng-click="makeNewSubTask()" ng-if="addSubTaskFlag" class="button button-full button-small button-balanced ion-android-add-circle item-divider"> Unteraufgaben hinzufügen</button>
+		<br>
+	  </c-accordion>
+
+      <c-accordion title="'Kommentare (' + task.comments.length + ')'">
+        <ion-list can-swipe="true" ng-show="task.comments.length > 0">
+          <div ng-repeat="comment in task.comments" ng-cloak>
+            <div ng-class="checkCommentOwner(comment.name) ? 'comment-bubble mine' : 'comment-bubble'">
+              <div class="mouth"></div>
+
+              <div class="name">{{comment.name}}</div>
+              <div class="delete" ng-if="checkCommentOwner(comment.name)" >
+                <i class="ion-close-circled" ng-click="removeComment(comment)"></i>
+              </div>
+              <span class="clear"></span>
+              <div class="content"> {{ comment.content }}</div>
+              <!--<ion-option-button class="button-assertive" ng-click="removeComment(comment.id)">Löschen</ion-option-button>-->
+
+            </div>
+            <div class="clear"></div>
+          </div>
+          <div class="clear"></div>
+        </ion-list>
+
+        <form ng-submit="addNewComment()">
+          <label class="item item-input item-stacked-label">
+            <span class="input-label">Kommentar Hinzufügen:</span>
+            <input type="text" ng-model="newComment.content" style="background-color:white;" />
+          </label>
+        </form>
+        <br>
+      </c-accordion>
+    </div>
+  </ion-content>
+  <ion-footer-bar class="bar bar-footer">
+    <div class="button-bar" ng-cloak>
+      <button ng-click="enroll()" ng-if="showEnroll" class="button button-full no-border-radius button-balanced ion-checkmark"> Ich arbeite mit! </button>
+      <button ng-click="cancel()" ng-if="showCancel"  class="button button-full no-border-radius button-assertive ion-close"> Absagen </button>
+      <button ng-click="follow()" ng-if="showFollow"  class="button button-full no-border-radius button-positive "> Folgen </button>
+      <button ng-click="cancel()" ng-if="showUnfollow" class="button button-full no-border-radius button-assertive"> Nicht mehr folgen </button>
+      <button ng-click="delete()" ng-if="showDelete"  class="button button-full no-border-radius button-assertive"> Löschen </button>
+    </div>
+  </ion-footer-bar>
+</ion-view>

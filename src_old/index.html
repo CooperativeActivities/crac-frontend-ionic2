@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+  <title></title>
+
+
+  <script src="lib/ionic/js/ionic.bundle.js"></script>
+  <script src="lib/lodash/lodash.js"></script>
+  <script src="lib/jquery-2.2.4/jquery.min.js"></script>
+  <script src="lib/webshim-1.16.0/js-webshim/dev/polyfiller.js"></script>
+
+  <!-- cordova script (this will be a 404 during development) -->
+  <script src="cordova.js"></script>
+
+  <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+  <link href="css/ionic.app.css" rel="stylesheet">
+  -->
+
+  <!-- Bootstrap Stylesheet-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+        integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css"
+        integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+          integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+          crossorigin="anonymous"></script>
+  <!-- end Bootstrap -->
+
+
+  <!-- Ionic stylesheet-->
+  <link href="css/ionic.app.css" rel="stylesheet">
+
+  <style type="text/css">
+    .platform-ios .manual-ios-statusbar-padding {
+      padding-top: 20px;
+    }
+
+    .manual-remove-top-padding {
+      padding-top: 0px;
+    }
+
+    .manual-remove-top-padding .scroll {
+      padding-top: 0px !important;
+    }
+
+    ion-list.manual-list-fullwidth div.list, .list.card.manual-card-fullwidth {
+      margin-left: -10px;
+      margin-right: -10px;
+    }
+
+    ion-list.manual-list-fullwidth div.list > .item, .list.card.manual-card-fullwidth > .item {
+      border-radius: 0px;
+      border-left: 0px;
+      border-right: 0px;
+    }
+  </style>
+
+  <!-- Custom stylesheet-->
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/taskDetail.css" rel="stylesheet">
+
+  <script src="js/app.js"></script>
+  <script src="lib/angular-modules/angular-cookies.min.js"></script>
+  <script src="lib/angular-modules/angular-route.js"></script>
+  <script src="lib/angular-modules/angular-locale_de-at.js"></script>
+
+  <!-- load services -->
+  <script src="js/services.js"></script>
+  <script src="js/services/authentication.service.js"></script>
+  <script src="js/services/user_service.js"></script>
+  <script src="js/services/task_service.js"></script>
+
+  <!-- load controllers -->
+  <script src="js/controllers.js"></script>
+  <script src="js/controllers/messaging/messagingCtrl.js"></script>
+  <script src="js/controllers/organisation/organisationsCtrl.js"></script>
+  <script src="js/controllers/organisation/orgCtrl.js"></script>
+  <script src="js/controllers/task/tasklistCtrl.js"></script>
+  <script src="js/controllers/task/myTasksCtrl.js"></script>
+  <script src="js/controllers/task/taskCtrl.js"></script>
+  <script src="js/controllers/task/taskEditCtrl.js"></script>
+  <script src="js/controllers/user/addCompetencyCtrl.js"></script>
+  <script src="js/controllers/user/loginCtrl.js"></script>
+  <script src="js/controllers/user/myCompetenciesCtrl.js"></script>
+  <script src="js/controllers/user/myCompetenciesInfoCtrl.js"></script>
+  <script src="js/controllers/user/newCompetenceCtrl.js"></script>
+  <script src="js/controllers/user/addCompetenceInfoCtrl.js"></script>
+  <script src="js/controllers/user/addCompetenceCtrl.js"></script>
+  <script src="js/controllers/user/myProfileCtrl.js"></script>
+  <script src="js/controllers/user/profileAssistentCtrl.js"></script>
+  <script src="js/controllers/user/settingsCtrl.js"></script>
+  <script src="js/controllers/user/typographyCtrl.js"></script>
+  <script src="js/controllers/user/signupCtrl.js"></script>
+  <script src="js/controllers/user/welcomeCtrl.js"></script>
+  <script src="js/controllers/homeCtrl.js"></script>
+  <script src="js/controllers/myCrAcMenuCtrl.js"></script>
+  <script src="js/controllers/navCtrl.js"></script>
+  <script src="js/controllers/user/logout_controller.js"></script>
+  <script src="js/controllers/task/swipeCtrl.js"></script>
+
+  <!-- load directives, ... -->
+  <script src="js/directives/taskPreview.js"></script>
+  <script src="js/directives/cAccordion.js"></script>
+  <script src="js/directives/customAccordion.js"></script>
+
+  <!-- load routes, directives, ... -->
+  <script src="js/routes.js"></script>
+  <script src="js/directives.js"></script>
+  <script src="lib/ionicuirouter/ionicUIRouter.js"></script>
+
+
+</head>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '682317891951108',
+      xfbml      : true,
+      version    : 'v2.8'
+    });
+    FB.AppEvents.logPageView();
+  };
+
+  (function(d, s, id){
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) {return;}
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+</script>
+<div id="fb-root"></div>
+
+<body ng-app="app" animation="slide-left-right-ios7" ng-controller="logoutCtrl">
+<div>
+  <ion-side-menus enable-menu-with-back-views="false" data-componentid="side-menu21">
+    <ion-side-menu-content>
+      <ion-nav-bar class="bar-1">
+        <ion-nav-back-button></ion-nav-back-button>
+        <ion-nav-buttons side="left">
+          <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+        </ion-nav-buttons>
+      </ion-nav-bar>
+      <ion-nav-view></ion-nav-view>
+    </ion-side-menu-content>
+    <ion-side-menu cache-view="false" side="left" id="side-menu21">
+      <ion-content ng-controller="myCrAcMenuCtrl" padding="false" class="side-menu-left side-menu-gradiant">
+        <div class="spacer" data-componentid="spacer9"></div>
+        <div class="profile-image" data-componentid="image8">
+          <a ui-sref="tabsController.myProfile" menu-close="">
+            <img src="img/B27MBEuwSJ6wsdkIwFL6_avatar.png" width="100" height="auto">
+          </a>
+        </div>
+        <h4 id="myCrAcMenu-heading14"data-componentid="heading14">{{user.firstName}} {{user.lastName}}</h4>
+        <div class="spacer" data-componentid="spacer10"></div>
+        <ion-list id="myCrAcMenu-list1" data-componentid="list1">
+          <ion-item class="item-icon-left positive  side-menu-item" id="myCrAcMenu-list-item20"
+                    ui-sref="tabsController.myProfile" menu-close="" data-componentid="list-item20">
+            <i class="icon ion-android-person"></i>Mein Profil
+          </ion-item>
+          <ion-item class="item-icon-left positive  side-menu-item" id="myCrAcMenu-list-item12"
+                    ui-sref="tabsController.myCompetencies_tab6" menu-close="" data-componentid="list-item12">
+            <i class="icon ion-ios-list-outline"></i>Meine Kompetenzen
+          </ion-item>
+          <ion-item class="item-icon-left positive  side-menu-item" id="myCrAcMenu-list-item19"
+                    ui-sref="tabsController.organisations" menu-close="" data-componentid="list-item19">
+            <i class="icon ion-briefcase"></i>Organisationen
+          </ion-item>
+          <ion-item class="item-icon-left positive  side-menu-item" id="myCrAcMenu-list-item11"
+                    ui-sref="tabsController.settings" menu-close="" data-componentid="list-item11">
+            <i class="icon ion-ios-settings"></i>Einstellungen
+          </ion-item>
+          <ion-item class="item-icon-left positive side-menu-item" id="myCrAcMenu-list-item10"
+                    ui-sref="tabsController.typography" menu-close="" data-componentid="list-item10">
+            <i class="icon ion-android-color-palette"></i>Typography
+          </ion-item>
+          <ion-item class="item-icon-left positive  side-menu-item" id="myCrAcMenu-list-item6"
+                    menu-close="" data-componentid="list-item6" ng-click="modal.show()">
+            <i class="icon ion-log-out"></i>Abmelden
+          </ion-item>
+        </ion-list>
+      </ion-content>
+
+      <script id="logout-modal.html" type="text/ng-template">
+        <ion-modal-view>
+          <ion-content>
+            <div class="row">
+              <div class="col">
+                <div class="content-title">Wirklich ausloggen?</div>
+              </div>
+            </div>
+            <div class="row responsive-lg">
+              <div class="col">
+                <button ng-click="logout()" ui-sref="login" class="button button-block button-outline button-positive button-assertive">
+                  <i class="ion-log-out"></i> Ja - ausloggen
+                </button>
+              </div>
+              <div class="col">
+                <button ng-click="modal.hide()" class="button button-block button-outline button-positive button-balanced">
+                  <i class="ion-log-in"></i> Nein - eingeloggt bleiben
+                </button>
+              </div>
+            </div>
+          </ion-content>
+        </ion-modal-view>
+      </script>
+
+    </ion-side-menu>
+  </ion-side-menus>
+</div>
+</body>
+</html>
