@@ -10,6 +10,7 @@ git clone git@github.com:CooperativeActivities/crac-frontend-ionic2.git
 
 # Setup
 ```
+npm install
 ```
 
 # Run local test server
